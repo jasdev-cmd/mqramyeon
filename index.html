@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MQ Ramyeon Snackhaus & Minimart</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <img src="images/logo.png" alt="MQ Ramyeon Logo">
+      <div class="brand-name">
+        <h1>MQ Ramyeon</h1>
+        <p>Snackhaus & Minimart</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <h2>Delicious Korean Noodles & Meals</h2>
+    <p>Quick breakfast, lunch & dinner — made with love.</p>
+    <a href="#menu" class="btn">See Our Menu</a>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-grid">
+      <div class="menu-item" onclick="openModal('ramyeon')">
+        <h3>🍜 Ramyeon Bowls</h3>
+        <p>Spicy, mild, or creamy — your choice of soup base.</p>
+      </div>
+      <div class="menu-item" onclick="openModal('stirfry')">
+        <h3>🥘 Stir-Fry Specials</h3>
+        <p>Wok-tossed noodles with bold Korean flavors.</p>
+      </div>
+      <div class="menu-item" onclick="openModal('meals')">
+        <h3>🍱 Quick Meals</h3>
+        <p>Breakfast, lunch & dinner sets — fast & filling.</p>
+      </div>
+      <div class="menu-item" onclick="openModal('minimart')">
+        <h3>🛒 Minimart</h3>
+        <p>Korean snacks, drinks & essentials to-go.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>
+      MQ Ramyeon Snackhaus & Minimart brings the taste of Korea to your table. 
+      Whether you’re craving hot soup, stir-fried noodles, or a quick meal on the go, 
+      we’ve got something for you. Visit us to enjoy authentic flavors with a modern twist!
+    </p>
+  </section>
+
+<!-- Contact -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Bonifacio St.(In-front of PNB) Ormoc City Leyte, Philippines</p>
+  <p>⏰ Hours: Mon–Sun, 8AM – 8PM</p>
+  <p>📞 Phone: 0998-577-4405</p>
+
+  <!-- Google Map -->
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d244.77675948361104!2d124.6082911321292!3d11.00646820932046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sph!4v1756647510985!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>>
+
+  <!-- Get Directions Button -->
+  <a href="https://maps.app.goo.gl/QLiLBeqsv548WCmY6" 
+   target="_blank" class="btn directions-btn">📍 Get Directions</a>
+
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MQ Ramyeon Snackhaus & Minimart | Designed with ❤️</p>
+  </footer>
+
+  <!-- 🟡 Menu Modals with Images -->
+  <!-- Ramyeon -->
+  <div id="ramyeon" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('ramyeon')">&times;</span>
+      <h2>🍜 Ramyeon Bowls</h2>
+      <div class="menu-detail">
+        <div class="item">
+          <img src="images/ramyeon1.jpg" alt="Spicy Shin Ramyeon">
+          <p>Spicy Shin Ramyeon</p>
+        </div>
+        <div class="item">
+          <img src="images/ramyeon2.jpg" alt="Cheesy Ramyeon">
+          <p>Cheesy Ramyeon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stir Fry -->
+  <div id="stirfry" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('stirfry')">&times;</span>
+      <h2>🥘 Stir-Fry Specials</h2>
+      <div class="menu-detail">
+        <div class="item">
+          <img src="images/stirfry1.jpg" alt="Bulgogi Stir-Fry Noodles">
+          <p>Bulgogi Stir-Fry Noodles</p>
+        </div>
+        <div class="item">
+          <img src="images/stirfry2.jpg" alt="Spicy Chicken Stir-Fry">
+          <p>Spicy Chicken Stir-Fry</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Meals -->
+  <div id="meals" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('meals')">&times;</span>
+      <h2>🍱 Quick Meals</h2>
+      <div class="menu-detail">
+        <div class="item">
+          <img src="images/meal1.jpg" alt="Korean Breakfast Set">
+          <p>Korean Breakfast Set</p>
+        </div>
+        <div class="item">
+          <img src="images/meal2.jpg" alt="Bibimbap Rice Bowl">
+          <p>Bibimbap Rice Bowl</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimart -->
+  <div id="minimart" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('minimart')">&times;</span>
+      <h2>🛒 Minimart</h2>
+      <div class="menu-detail">
+        <div class="item">
+          <img src="images/minimart1.jpg" alt="Korean Snacks">
+          <p>Korean Snacks</p>
+        </div>
+        <div class="item">
+          <img src="images/minimart2.jpg" alt="Instant Ramyeon Packs">
+          <p>Instant Ramyeon Packs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
