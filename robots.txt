@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jasdev-cmd.github.io/mqramyeon/sitemap.xml
