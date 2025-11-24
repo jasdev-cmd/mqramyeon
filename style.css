@@ -546,4 +546,76 @@ footer {
   color: #ff5500;
   font-weight: 700;
 }
+/* MOBILE HERO + HEADER ADJUSTMENTS */
+@media (max-width: 768px) {
+  /* Header */
+  header {
+    flex-wrap: nowrap;                 /* prevent stacking */
+    justify-content: space-between;    /* brand left, nav right */
+    padding: 10px 15px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .brand img {
+    height: 40px;                     /* smaller logo */
+    margin: 0;
+  }
+
+  .brand-name h1 {
+    font-size: 16px;                  /* smaller font */
+    margin: 0;
+  }
+
+  .brand-name p {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  nav a {
+    font-size: 13px;
+    margin: 0;
+  }
+
+  /* Hero section */
+  .hero {
+    padding: 80px 10px 60px;         /* less vertical padding */
+    text-align: center;
+  }
+
+  .hero-content h2 {
+    font-size: 20px;                  /* smaller title */
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 14px;
+  }
+
+  .hero-content .btn {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  /* Parallax floating images smaller */
+  .parallax-layer {
+    width: 60px;
+    height: 60px;
+  }
+
+  .layer4 {
+    width: 100px;
+  }
+}
+
 
