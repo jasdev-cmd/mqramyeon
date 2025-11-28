@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MQ Ramyeon - Full Menu</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Additional styles for menu page */
+    .menu-page {
+      min-height: 100vh;
+      padding: 20px;
+      background: #fffdf8;
+    }
+
+    .back-home {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background: #ff7a00;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .back-home:hover {
+      background: #f36e1c;
+      transform: translateX(-5px);
+    }
+
+    .menu-categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 30px 0;
+    }
+
+    .category-btn {
+      padding: 12px 24px;
+      background: white;
+      border: 2px solid #ff7a00;
+      color: #ff7a00;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .category-btn:hover {
+      background: #fff5ed;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 122, 0, 0.2);
+    }
+
+    .category-btn.active {
+      background: linear-gradient(90deg, #f36e1c, #ff7a00);
+      color: white;
+      border-color: #ff7a00;
+    }
+
+    #searchInput {
+      margin: 20px auto;
+      padding: 12px 20px;
+      width: 100%;
+      max-width: 500px;
+      border: 2px solid #ff7a00;
+      border-radius: 25px;
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      display: block;
+    }
+
+    #searchInput:focus {
+      outline: none;
+      border-color: #f36e1c;
+      box-shadow: 0 0 10px rgba(255, 122, 0, 0.3);
+    }
+
+    .menu-header {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .menu-header h2 {
+      color: #ff7a00;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .category-title {
+      text-align: center;
+      color: #ff7a00;
+      font-size: 28px;
+      margin: 30px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      color: #999;
+      font-size: 18px;
+    }
+
+    #menuItems {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px auto;
+      max-width: 1200px;
+      padding: 0 20px;
+    }
+
+    #menuItems .item {
+      background: white;
+      border-radius: 15px;
+      padding: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    #menuItems .item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(255, 122, 0, 0.3);
+    }
+
+    #menuItems .item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      background: #f5f5f5;
+    }
+
+    #menuItems .item p {
+      margin: 8px 0;
+      font-weight: 600;
+      color: #333;
+      font-size: 15px;
+      text-align: center;
+    }
+
+    #menuItems .item .price {
+      font-size: 16px;
+      color: #ff5500;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(5px);
+      z-index: 99999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      animation: modalPop 0.3s ease;
+    }
+
+    @keyframes modalPop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s;
+    }
+
+    .close:hover {
+      color: #ff5500;
+    }
+
+    #modalImg {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      background: #f5f5f5;
+    }
+
+    #modalName {
+      color: #333;
+      font-size: 24px;
+      margin: 15px 0 10px;
+    }
+
+    #modalDesc {
+      color: #666;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+
+    #modalPrice {
+      font-size: 22px;
+      color: #ff5500;
+      font-weight: 700;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 768px) {
+      #menuItems {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .category-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+
+      .menu-header h2 {
+        font-size: 28px;
+      }
+
+      .category-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Load dark mode immediately
+    (function() {
+      try {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'dark') {
+          document.body.classList.add('dark-mode');
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <img src="images/logo.png" alt="MQ Ramyeon Logo">
+      <h1>MQ Ramyeon <span class="divider">|</span> Snackhaus & Minimart</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Menu Section -->
+  <section class="menu-page">
+    <a href="index.html" class="back-home">← Back to Home</a>
+    
+    <div class="menu-header">
+      <h2>🍜 Our Full Menu</h2>
+      <p>Explore our delicious Korean dishes</p>
+    </div>
+
+    <!-- Category Buttons -->
+    <div class="menu-categories">
+      <button class="category-btn active" onclick="showCategory('ramyeon')">🍜 Ramyeon</button>
+      <button class="category-btn" onclick="showCategory('stirfry')">🥘 Stir-Fry</button>
+      <button class="category-btn" onclick="showCategory('meals')">🍱 Meals</button>
+      <button class="category-btn" onclick="showCategory('snacks')">🍿 Snacks</button>
+    </div>
+
+    <!-- Search -->
+    <input type="text" id="searchInput" placeholder="🔍 Search menu items...">
+
+    <!-- Category Title -->
+    <h3 class="category-title" id="categoryTitle">🍜 Ramyeon Bowls</h3>
+
+    <!-- Menu Items -->
+    <div id="menuItems"></div>
+  </section>
+
+  <!-- Modal -->
+  <div id="itemModal" class="modal" onclick="if(event.target === this) closeModal()">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="">
+      <h3 id="modalName"></h3>
+      <p id="modalDesc"></p>
+      <div id="modalPrice"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 MQ Ramyeon Snackhaus & Minimart | All rights reserved.</p>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a href="https://www.facebook.com/profile.php?id=61579699462526" target="_blank" rel="noopener noreferrer" class="message-btn" aria-label="Message us on Facebook">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12,2C6.477,2,2,6.145,2,11.242c0,2.847,1.422,5.387,3.65,7.046v3.787c0,0.414,0.336,0.75,0.75,0.75c0.143,0,0.284-0.041,0.407-0.118l3.882-2.425c0.904,0.233,1.857,0.359,2.811,0.359c5.523,0,10-4.145,10-9.242S17.523,2,12,2z M12.75,14.5h-1.5c-0.414,0-0.75-0.336-0.75-0.75v-4c0-0.414,0.336-0.75,0.75-0.75h1.5c0.414,0,0.75,0.336,0.75,0.75v4C13.5,14.164,13.164,14.5,12.75,14.5z M12,8c-0.552,0-1-0.448-1-1s0.448-1,1-1s1,0.448,1,1S12.552,8,12,8z"/>
+    </svg>
+  </a>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0 c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2 c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1 C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06 c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41 l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41 c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36 c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/>
+    </svg>
+    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Z"/>
+    </svg>
+  </button>
+
+  <!-- Menu Script - STANDALONE, doesn't use script.js -->
+  <script>
+    const menuItemsData = {
+      ramyeon: [
+        { img: "images/ram1.png", name: "Jin Ramen Mild", price: "₱87", desc: "Mild and flavorful Korean noodle soup with tender noodles." },
+        { img: "images/ram2.png", name: "Jin Ramen Spicy", price: "₱87", desc: "Spicy ramen with rich broth and authentic Korean spices." },
+        { img: "images/ram3.png", name: "Spicy Cheese Ramen", price: "₱96", desc: "Spicy ramen topped with melted cheese for extra richness." },
+        { img: "images/ram4.png", name: "Cheese Ramen", price: "₱97", desc: "Creamy cheese ramen with smooth, rich flavor." },
+        { img: "images/ram5.png", name: "Spicy Cheesy Ramen", price: "₱97", desc: "The perfect combo of spicy and cheesy goodness." },
+        { img: "images/ram6.png", name: "Nongshim Super Spicy", price: "₱95", desc: "Extra spicy noodles for those who love heat!" },
+        { img: "images/ram7.png", name: "Shin Ramyun", price: "₱95", desc: "Classic Korean spicy noodle soup, a crowd favorite." },
+        { img: "images/ram8.png", name: "Cheesy Ramyun", price: "₱100", desc: "Rich and creamy cheese-loaded ramyun." },
+        { img: "images/ram9.png", name: "Ansungtangmyun", price: "₱112", desc: "Traditional Korean soup noodles with deep savory flavor." },
+        { img: "images/ram10.png", name: "Veggie Soon", price: "₱85", desc: "Vegetable noodle soup, light and refreshing." },
+        { img: "images/ram11.png", name: "Koreno Beef", price: "₱85", desc: "Beef-flavored Korean noodles with savory taste." },
+        { img: "images/ram12.png", name: "Koreno Shrimp", price: "₱85", desc: "Shrimp-flavored noodles with seafood goodness." }
+      ],
+      stirfry: [
+        { img: "images/stir1.png", name: "Buldak Original", price: "₱135", desc: "Original spicy fire chicken stir-fry noodles." },
+        { img: "images/stir2.png", name: "Buldak Carbonara", price: "₱134", desc: "Creamy carbonara meets spicy chicken stir-fry." },
+        { img: "images/stir3.png", name: "Buldak Rose", price: "₱138", desc: "Rose sauce stir-fry with spicy chicken flavor." },
+        { img: "images/stir4.png", name: "Buldak Quattro Cheese", price: "₱130", desc: "Four cheese blend with spicy stir-fry noodles." },
+        { img: "images/stir5.png", name: "Spicy Cheese Stir Fry", price: "₱100", desc: "Cheesy and spicy stir-fried noodles." },
+        { img: "images/stir6.png", name: "Koreno Jjajangmen", price: "₱86", desc: "Korean black bean sauce stir-fry noodles." },
+        { img: "images/stir7.png", name: "Nongshim Cheese Stir Fry", price: "₱130", desc: "Cheese-loaded stir-fry from Nongshim." },
+        { img: "images/stir8.png", name: "Nongshim Shin Ramyun Spicy", price: "₱130", desc: "Spicy stir-fry version of classic Shin Ramyun." }
+      ],
+      meals: [
+        { img: "images/meal1.png", name: "Tocino w/ Fried Egg", price: "₱135", desc: "Sweet Filipino Breakfast with egg & atchara." },
+        { img: "images/meal2.png", name: "Korean Luncheon Meat w/ Fried Egg", price: "₱135", desc: "Fusion taste with egg, rice & atchara." },
+        { img: "images/meal3.png", name: "Golden Chicken", price: "₱115", desc: "Crispy, golden chicken with rice, plus free soup!" },
+        { img: "images/meal4.png", name: "Tempura Shrimps", price: "₱115", desc: "Lightly battered shrimp with rice, plus free soup!" },
+        { img: "images/meal5.png", name: "Grilled Burger Steak", price: "₱135", desc: "Savory grilled burger with mushroom sauce, side dish, and rice." },
+        { img: "images/meal6.png", name: "Honey Glazed Chicken Wing", price: "₱125", desc: "Sweet honey-glazed wing with side dish and rice." },
+        { img: "images/meal7.png", name: "Bibimbap", price: "₱130", desc: "Colorful mixed rice bowl with veggies, meat, and egg." },
+        { img: "images/meal8.png", name: "Boneless Bangus", price: "₱125", desc: "Crispy boneless bangus with egg and rice." },
+        { img: "images/meal9.png", name: "Baby Back Ribs", price: "₱135", desc: "Tender ribs with a vibrant side dish over rice." },
+        { img: "images/meal10.png", name: "Pork Ala Pobre", price: "₱115", desc: "Garlic-infused pork with a tangy tartar sauce over rice." },
+        { img: "images/meal11.png", name: "Pork Tonkatsu", price: "₱115", desc: "Crispy pork cutlet with tartar sauce and rice." }
+      ],
+      snacks: [
+        { img: "images/snacks1.png", name: "Classic Cheese Burger", price: "₱80", desc: "Juicy burger with melted cheese and fries." },
+        { img: "images/snacks2.png", name: "MQ Halo-Halo", price: "₱95", desc: "Refreshing Filipino shaved ice dessert." },
+        { img: "images/snacks3.png", name: "MQ French Fries", price: "₱60", desc: "Crispy, golden-fried potatoes with ketchup." },
+        { img: "images/snacks4.png", name: "Mango Taco", price: "₱65", desc: "Sweet and savory taco with fresh mango." },
+        { img: "images/snacks5.png", name: "Guacamole Taco", price: "₱65", desc: "Fresh and zesty taco with creamy guacamole." },
+        { img: "images/snacks6.png", name: "Beef Taco", price: "₱65", desc: "Savory beef taco with zesty toppings." },
+        { img: "images/snacks7.png", name: "Shrimp Taco", price: "₱65", desc: "Delicious shrimp taco with fresh flavors." },
+        { img: "images/snacks8.png", name: "Beef Shawarma Regular", price: "₱80", desc: "Classic beef shawarma with flavorful spices." },
+        { img: "images/snacks9.png", name: "Beef Shawarma Mild Spicy", price: "₱80", desc: "Milder, spiced beef shawarma for those who prefer less heat." },
+        { img: "images/snacks10.png", name: "MQ Milk Tea", price: "₱35-40", desc: "Creamy, flavored milk tea with chewy boba pearls." }
+      ]
+    };
+
+    let currentCategory = 'ramyeon';
+    let allItems = [];
+
+    const categoryIcons = { ramyeon: '🍜', stirfry: '🥘', meals: '🍱', snacks: '🍿' };
+    const categoryNames = { ramyeon: 'Ramyeon Bowls', stirfry: 'Stir-Fry Specials', meals: 'Quick Meals', snacks: 'Snacks & Treats' };
+
+    function showCategory(category) {
+      currentCategory = category;
+      allItems = menuItemsData[category];
+      document.getElementById('categoryTitle').innerHTML = `${categoryIcons[category]} ${categoryNames[category]}`;
+      document.getElementById('searchInput').value = '';
+      renderItems(allItems);
+      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function renderItems(items) {
+      const container = document.getElementById('menuItems');
+      container.innerHTML = '';
+      if (items.length === 0) {
+        container.innerHTML = '<div class="no-results">No items found.</div>';
+        return;
+      }
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `<img src="${item.img}" alt="${item.name}" onerror="this.src='images/logo.png'"><p>${item.name}</p><div class="price">${item.price}</div>`;
+        div.onclick = (e) => { e.stopPropagation(); openModal(item.img, item.name, item.desc, item.price); };
+        container.appendChild(div);
+      });
+    }
+
+    function openModal(img, name, desc, price) {
+      document.getElementById('itemModal').style.display = 'flex';
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalName').innerText = name;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalPrice').innerText = price;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('itemModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const filtered = allItems.filter(item => item.name.toLowerCase().includes(this.value.toLowerCase()) || item.desc.toLowerCase().includes(this.value.toLowerCase()));
+      renderItems(filtered);
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const category = urlParams.get('category');
+      if (category && menuItemsData[category]) {
+        allItems = menuItemsData[category];
+        document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+        const targetBtn = Array.from(document.querySelectorAll('.category-btn')).find(btn => btn.textContent.includes(categoryIcons[category]));
+        if (targetBtn) targetBtn.classList.add('active');
+        document.getElementById('categoryTitle').innerHTML = `${categoryIcons[category]} ${categoryNames[category]}`;
+      } else {
+        allItems = menuItemsData['ramyeon'];
+      }
+      renderItems(allItems);
+    });
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.onclick = function() {
+        document.body.classList.toggle('dark-mode');
+        try {
+          localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        } catch(e) {}
+        this.style.transform = 'rotate(360deg) scale(1.1)';
+        setTimeout(() => { this.style.transform = ''; }, 300);
+      };
+    }
+  </script>
+</body>
+</html>
