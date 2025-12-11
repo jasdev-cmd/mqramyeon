@@ -267,7 +267,6 @@
     })();
   </script>
 
-  <!-- Header -->
   <header>
     <div class="brand">
       <img src="images/logo.png" alt="MQ Ramyeon Logo">
@@ -281,7 +280,6 @@
     </nav>
   </header>
 
-  <!-- Menu Section -->
   <section class="menu-page">
     <a href="index.html" class="back-home">← Back to Home</a>
     
@@ -290,25 +288,22 @@
       <p>Explore our delicious Korean dishes</p>
     </div>
 
-    <!-- Category Buttons -->
     <div class="menu-categories">
       <button class="category-btn active" onclick="showCategory('ramyeon')">🍜 Ramyeon</button>
       <button class="category-btn" onclick="showCategory('stirfry')">🥘 Stir-Fry</button>
       <button class="category-btn" onclick="showCategory('meals')">🍱 Meals</button>
       <button class="category-btn" onclick="showCategory('snacks')">🍿 Snacks</button>
+      <button class="category-btn" onclick="showCategory('cupnoodles')">🥡 Cup Noodles</button>
+      <button class="category-btn" onclick="showCategory('drinks')">🥤 Drinks</button>
     </div>
 
-    <!-- Search -->
     <input type="text" id="searchInput" placeholder="🔍 Search menu items...">
 
-    <!-- Category Title -->
     <h3 class="category-title" id="categoryTitle">🍜 Ramyeon Bowls</h3>
 
-    <!-- Menu Items -->
     <div id="menuItems"></div>
   </section>
 
-  <!-- Modal -->
   <div id="itemModal" class="modal" onclick="if(event.target === this) closeModal()">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
@@ -323,7 +318,6 @@
     <p>© 2025 MQ Ramyeon Snackhaus & Minimart | All rights reserved.</p>
   </footer>
 
-  <!-- Floating Buttons -->
   <a href="https://www.facebook.com/profile.php?id=61579699462526" target="_blank" rel="noopener noreferrer" class="message-btn" aria-label="Message us on Facebook">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path d="M12,2C6.477,2,2,6.145,2,11.242c0,2.847,1.422,5.387,3.65,7.046v3.787c0,0.414,0.336,0.75,0.75,0.75c0.143,0,0.284-0.041,0.407-0.118l3.882-2.425c0.904,0.233,1.857,0.359,2.811,0.359c5.523,0,10-4.145,10-9.242S17.523,2,12,2z M12.75,14.5h-1.5c-0.414,0-0.75-0.336-0.75-0.75v-4c0-0.414,0.336-0.75,0.75-0.75h1.5c0.414,0,0.75,0.336,0.75,0.75v4C13.5,14.164,13.164,14.5,12.75,14.5z M12,8c-0.552,0-1-0.448-1-1s0.448-1,1-1s1,0.448,1,1S12.552,8,12,8z"/>
@@ -339,7 +333,6 @@
     </svg>
   </button>
 
-  <!-- Menu Script - STANDALONE, doesn't use script.js -->
   <script>
     const menuItemsData = {
       ramyeon: [
@@ -354,7 +347,14 @@
         { img: "images/ram9.png", name: "Ansungtangmyun", price: "₱112", desc: "Traditional Korean soup noodles with deep savory flavor." },
         { img: "images/ram10.png", name: "Veggie Soon", price: "₱85", desc: "Vegetable noodle soup, light and refreshing." },
         { img: "images/ram11.png", name: "Koreno Beef", price: "₱85", desc: "Beef-flavored Korean noodles with savory taste." },
-        { img: "images/ram12.png", name: "Koreno Shrimp", price: "₱85", desc: "Shrimp-flavored noodles with seafood goodness." }
+        { img: "images/ram12.png", name: "Koreno Shrimp", price: "₱85", desc: "Shrimp-flavored noodles with seafood goodness." },
+        // NEW ITEMS ADDED
+        { img: "images/ram13.png", name: "Koreno Chicken", price: "₱85", desc: "Description coming soon..." },
+        { img: "images/ram14.png", name: "Racoon Mild", price: "₱100", desc: "Description coming soon..." },
+        { img: "images/ram15.png", name: "Racoon Spicy", price: "₱105", desc: "Description coming soon..." },
+        { img: "images/ram16.png", name: "Samyang", price: "₱80", desc: "Description coming soon..." },
+        { img: "images/ram17.png", name: "Koka Laksa", price: "₱78", desc: "Description coming soon..." },
+        { img: "images/ram18.png", name: "Miso Ramen", price: "₱126", desc: "Description coming soon..." }
       ],
       stirfry: [
         { img: "images/stir1.png", name: "Buldak Original", price: "₱135", desc: "Original spicy fire chicken stir-fry noodles." },
@@ -364,7 +364,17 @@
         { img: "images/stir5.png", name: "Spicy Cheese Stir Fry", price: "₱100", desc: "Cheesy and spicy stir-fried noodles." },
         { img: "images/stir6.png", name: "Koreno Jjajangmen", price: "₱86", desc: "Korean black bean sauce stir-fry noodles." },
         { img: "images/stir7.png", name: "Nongshim Cheese Stir Fry", price: "₱130", desc: "Cheese-loaded stir-fry from Nongshim." },
-        { img: "images/stir8.png", name: "Nongshim Shin Ramyun Spicy", price: "₱130", desc: "Spicy stir-fry version of classic Shin Ramyun." }
+        { img: "images/stir8.png", name: "Nongshim Shin Ramyun Spicy", price: "₱130", desc: "Spicy stir-fry version of classic Shin Ramyun." },
+        // NEW ITEMS ADDED
+        { img: "images/stir9.png", name: "Chapagetti", price: "₱104", desc: "Description coming soon..." },
+        { img: "images/stir10.png", name: "Beef Bulgogi", price: "₱102", desc: "Description coming soon..." },
+        { img: "images/stir11.png", name: "Buldak Cream Carbonara", price: "₱128", desc: "Description coming soon..." },
+        { img: "images/stir12.png", name: "Cheese Stir Fry", price: "₱98", desc: "Description coming soon..." },
+        { img: "images/stir13.png", name: "Yopokki Sweet&Spicy", price: "₱140", desc: "Description coming soon..." },
+        { img: "images/stir14.png", name: "Yopokki Cheese", price: "₱150", desc: "Description coming soon..." },
+        { img: "images/stir15.png", name: "Yopokki Golden", price: "₱150", desc: "Description coming soon..." },
+        { img: "images/stir16.png", name: "Yopokki Hot&Spicy", price: "₱150", desc: "Description coming soon..." },
+        { img: "images/stir17.png", name: "Yopokki Rose", price: "₱150", desc: "Description coming soon..." }
       ],
       meals: [
         { img: "images/meal1.png", name: "Tocino w/ Fried Egg", price: "₱135", desc: "Sweet Filipino Breakfast with egg & atchara." },
@@ -390,14 +400,68 @@
         { img: "images/snacks8.png", name: "Beef Shawarma Regular", price: "₱80", desc: "Classic beef shawarma with flavorful spices." },
         { img: "images/snacks9.png", name: "Beef Shawarma Mild Spicy", price: "₱80", desc: "Milder, spiced beef shawarma for those who prefer less heat." },
         { img: "images/snacks10.png", name: "MQ Milk Tea", price: "₱35-40", desc: "Creamy, flavored milk tea with chewy boba pearls." }
+      ],
+      cupnoodles: [
+        { img: "images/cup1.png", name: "Knock Disbokki Bowl", price: "₱93", desc: "Description coming soon..." },
+        { img: "images/cup2.png", name: "Udon Bowl", price: "₱93", desc: "Description coming soon..." },
+        { img: "images/cup3.png", name: "Nongshim Shin Black", price: "₱128", desc: "Description coming soon..." },
+        { img: "images/cup4.png", name: "Buldak Original Bowl", price: "₱127", desc: "Description coming soon..." },
+        { img: "images/cup5.png", name: "Buldak Quattro Cheese Bowl", price: "₱138", desc: "Description coming soon..." },
+        { img: "images/cup6.png", name: "Buldak Cream Carbonara Bowl", price: "₱128", desc: "Description coming soon..." },
+        { img: "images/cup7.png", name: "Buldak Carbonara Bowl", price: "₱145", desc: "Description coming soon..." },
+        { img: "images/cup8.png", name: "Buldak Cheese Bowl", price: "₱135", desc: "Description coming soon..." },
+        { img: "images/cup9.png", name: "Buldak Rose Bowl", price: "₱128", desc: "Description coming soon..." },
+        { img: "images/cup10.png", name: "Shin Ramyun Bowl", price: "₱87", desc: "Description coming soon..." },
+        { img: "images/cup11.png", name: "Beef Bulgogi Bowl", price: "₱100", desc: "Description coming soon..." },
+        { img: "images/cup12.png", name: "Beef Bulgogi Cup", price: "₱95", desc: "Description coming soon..." },
+        { img: "images/cup13.png", name: "Buldak Carbonara Cup", price: "₱91", desc: "Description coming soon..." },
+        { img: "images/cup14.png", name: "Buldak Cheese Cup", price: "₱81", desc: "Description coming soon..." },
+        { img: "images/cup15.png", name: "Udon Cup", price: "₱63", desc: "Description coming soon..." },
+        { img: "images/cup16.png", name: "Jin Ramen Cup Mild", price: "₱63", desc: "Description coming soon..." },
+        { img: "images/cup17.png", name: "Jin Ramen Cup Spicy", price: "₱63", desc: "Description coming soon..." },
+        { img: "images/cup18.png", name: "Shin Ramyun Cup", price: "₱65", desc: "Description coming soon..." },
+        { img: "images/cup19.png", name: "Yopokki Cup Golden", price: "₱116", desc: "Description coming soon..." },
+        { img: "images/cup20.png", name: "Yopokki Cup Rose", price: "₱116", desc: "Description coming soon..." },
+        { img: "images/cup21.png", name: "Yukgaejang", price: "₱75", desc: "Description coming soon..." }
+      ],
+      drinks: [
+        { img: "images/drink1.png", name: "7 Up Mismo", price: "₱20", desc: "Description coming soon..." },
+        { img: "images/drink2.png", name: "Baba Ade Shine Muscat", price: "₱85", desc: "Description coming soon..." },
+        { img: "images/drink3.png", name: "Baba Ade Watermelon Ade", price: "₱85", desc: "Description coming soon..." },
+        { img: "images/drink4.png", name: "Binggrae Milk Drink", price: "₱72", desc: "Banana, Coffee, Melon, Taro flavors available." },
+        { img: "images/drink5.png", name: "Caffebene Peach Ice Tea", price: "₱81", desc: "Description coming soon..." },
+        { img: "images/drink6.png", name: "Caffebene Watermelon Ade", price: "₱81", desc: "Description coming soon..." },
+        { img: "images/drink7.png", name: "Cantabile Ade All Flavors", price: "₱80", desc: "Description coming soon..." },
+        { img: "images/drink8.png", name: "Cantata All Flavors", price: "₱90", desc: "Description coming soon..." },
+        { img: "images/drink9.png", name: "Coffee Machine Coffee", price: "₱25", desc: "All flavors available." },
+        { img: "images/drink10.png", name: "Kopiko Lucky Day", price: "₱29", desc: "Description coming soon..." },
+        { img: "images/drink11.png", name: "Softdrinks in Can", price: "₱50", desc: "Description coming soon..." },
+        { img: "images/drink12.png", name: "Softdrinks Mismo", price: "₱20", desc: "Description coming soon..." },
+        { img: "images/drink13.png", name: "Softdrinks Swakto", price: "₱15", desc: "Description coming soon..." },
+        { img: "images/drink14.png", name: "Ice Talk All Flavors", price: "₱80", desc: "Description coming soon..." },
+        { img: "images/drink15.png", name: "Juice Dispenser", price: "₱20", desc: "Blue Lemonade and Cucumber available." },
+        { img: "images/drink16.png", name: "Roastique Ade All Flavors", price: "₱72", desc: "Description coming soon..." },
+        { img: "images/drink17.png", name: "Purified Water 1L", price: "₱20", desc: "Description coming soon..." },
+        { img: "images/drink18.png", name: "Purified Water 500ml", price: "₱15", desc: "Description coming soon..." },
+        { img: "images/drink19.png", name: "Purified Water 350ml", price: "₱10", desc: "Description coming soon..." },
+        { img: "images/drink20.png", name: "Distilled Water 1L", price: "₱25", desc: "Description coming soon..." },
+        { img: "images/drink21.png", name: "Distilled Water 500ml", price: "₱18", desc: "Description coming soon..." },
+        { img: "images/drink22.png", name: "Milkis All Flavors", price: "₱62", desc: "Description coming soon..." }
       ]
     };
 
     let currentCategory = 'ramyeon';
     let allItems = [];
 
-    const categoryIcons = { ramyeon: '🍜', stirfry: '🥘', meals: '🍱', snacks: '🍿' };
-    const categoryNames = { ramyeon: 'Ramyeon Bowls', stirfry: 'Stir-Fry Specials', meals: 'Quick Meals', snacks: 'Snacks & Treats' };
+    const categoryIcons = { ramyeon: '🍜', stirfry: '🥘', meals: '🍱', snacks: '🍿', cupnoodles: '🥡', drinks: '🥤' };
+    const categoryNames = { 
+      ramyeon: 'Ramyeon Bowls', 
+      stirfry: 'Stir-Fry Specials', 
+      meals: 'Quick Meals', 
+      snacks: 'Snacks & Treats',
+      cupnoodles: 'Cup Noodles & Bowls',
+      drinks: 'Cold Drinks'
+    };
 
     function showCategory(category) {
       currentCategory = category;
