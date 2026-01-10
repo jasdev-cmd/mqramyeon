@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* --- FIX START: Universal Reset --- */
+    /* This ensures padding doesn't make boxes wider than they should be */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    /* --- FIX END --- */
+
     /* Additional styles for menu page */
     .menu-page {
       min-height: 100vh;
@@ -233,10 +242,13 @@
       margin-top: 15px;
     }
 
+    /* --- FIX START: Mobile Adjustments --- */
     @media (max-width: 768px) {
       #menuItems {
-        grid-template-columns: repeat(2, 1fr);
+        /* This forces exactly 2 equal columns */
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
         gap: 15px;
+        padding: 0 10px;
       }
 
       .category-btn {
@@ -251,7 +263,13 @@
       .category-title {
         font-size: 22px;
       }
+      
+      /* Slightly smaller images on mobile to prevent overflow */
+      #menuItems .item img {
+        height: 140px;
+      }
     }
+    /* --- FIX END --- */
   </style>
 </head>
 <body>
